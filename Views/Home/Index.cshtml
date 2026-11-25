@@ -1,11 +1,12 @@
-﻿@{
+﻿@model List<SecureGate.Models.AuditLog>
+@{
     ViewData["Title"] = "My security";
     ViewData["ShowNav"] = true;
 }
 <div class="row g-3 mb-3">
-    <b>@User.Identity!.Name</b>
-    <div class="col-md-4"><div class="sg-box sg-stat"><b>Active</b><span>Authenticator app enrolled</span></div></div>
-    <div class="col-md-4"><div class="sg-box sg-stat"><b>8 of 10</b><span>Recovery codes unused</span></div></div>
+    <div class="col-md-4"><div class="sg-box sg-stat"><b>@User.Identity!.Name</b><span>Signed in</span></div></div>
+    <div class="col-md-4"><div class="sg-box sg-stat"><b>Not set up</b><span>Authenticator app</span></div></div>
+    <div class="col-md-4"><div class="sg-box sg-stat"><b>0 of 10</b><span>Recovery codes unused</span></div></div>
 </div>
 
 <div class="row g-3 mb-3">
@@ -34,10 +35,18 @@
         <table class="table table-sm small mb-0">
             <thead><tr><th>Time</th><th>Event</th><th>Detail</th></tr></thead>
             <tbody>
-                <tr><td>11/25/26 3:41 PM</td><td>Login ok</td><td>Session created</td></tr>
-                <tr><td>11/25/26 3:41 PM</td><td>Totp fail</td><td>Invalid, expired, or reused code (1/5)</td></tr>
-                <tr><td>11/24/26 9:12 AM</td><td>Login ok</td><td>Session created</td></tr>
-                <tr><td>11/22/26 7:03 PM</td><td>Enroll</td><td>Authenticator enrolled; 10 recovery codes issued</td></tr>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td>@e.Timestamp.ToLocalTime().ToString("MM/dd/yy h:mm tt")</td>
+                        <td><span class="badge text-bg-@e.BadgeClass">@e.Label</span></td>
+                        <td>@e.Detail</td>
+                    </tr>
+                }
+                @if (!Model.Any())
+                {
+                    <tr><td colspan="3" class="sg-muted">No activity yet.</td></tr>
+                }
             </tbody>
         </table>
     </div>

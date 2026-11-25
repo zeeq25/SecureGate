@@ -40,6 +40,9 @@ builder.Services.ConfigureApplicationCookie(o =>
     o.SlidingExpiration = true;
 });
 
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<SecureGate.Services.AuditService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
