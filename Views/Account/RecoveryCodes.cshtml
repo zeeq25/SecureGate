@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Recovery codes";
+}
+<div class="sg-card">
+    <h1 class="h4">Save your recovery codes</h1>
+    <p class="sg-muted">Each code works once if you lose your device. They’re shown this one time.</p>
+    <div class="sg-codes">
+        <span>K7M2P-9XQ4R</span><span>H3WTB-8N5CD</span>
+        <span>R6YFA-2ZJ7E</span><span>M9UXC-4P3LK</span>
+        <span>T5GDN-7B8WH</span><span>Q2VSE-6A9KY</span>
+        <span>C8JRM-3F4TX</span><span>L4NPZ-5H2UB</span>
+        <span>W7ADK-9S6GQ</span><span>X3EBY-8M5JV</span>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="saved" />
+        <label class="form-check-label" for="saved">I’ve stored these codes somewhere safe</label>
+    </div>
+    <a id="goBtn" class="btn btn-primary w-100 mt-3 disabled" asp-controller="Home" asp-action="Index">Continue</a>
+</div>

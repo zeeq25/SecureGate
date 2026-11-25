@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Verify";
+}
+<div class="sg-card">
+    <h1 class="h4" id="verify-title">Enter your code</h1>
+
+    <div id="mode-totp">
+        <p class="sg-muted">Open your authenticator app and enter the current code for SecureGate.</p>
+        <label for="c" class="form-label">6-digit code</label>
+        <input id="c" class="form-control sg-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+        <div class="sg-bar"><i id="win"></i></div>
+        <div class="d-flex justify-content-between small sg-muted mt-1"><span>Code refreshes every 30 seconds</span><span id="wl"></span></div>
+    </div>
+
+    <div id="mode-rec" class="d-none">
+        <p class="sg-muted">Each recovery code works once. Using one means you must set up a new authenticator.</p>
+        <label for="rc" class="form-label">Recovery code</label>
+        <input id="rc" class="form-control sg-code" style="font-size:1.3rem;letter-spacing:.15em" maxlength="11" placeholder="XXXXX-XXXXX" />
+    </div>
+
+    <a class="btn btn-primary w-100 mt-4" asp-controller="Home" asp-action="Index">Verify</a>
+    <p class="small mt-3 mb-0">
+        <button type="button" id="toggle" class="btn btn-link p-0 small">Lost your device? Use a recovery code</button>
+        · <a asp-controller="Account" asp-action="Login">Cancel</a>
+    </p>
+</div>

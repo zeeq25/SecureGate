@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Set up authenticator";
+}
+<div class="sg-card">
+    <h1 class="h4">Set up your authenticator</h1>
+    <p class="sg-muted">Scan the QR code with Google Authenticator or Microsoft Authenticator.</p>
+    <div class="sg-qr">QR code appears here<br />(added in the TOTP step)</div>
+    <p class="small sg-muted mb-1 mt-3">Can’t scan? Enter this key manually:</p>
+    <div class="sg-key">JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP</div>
+    <label for="c" class="form-label mt-3">6-digit code</label>
+    <input id="c" class="form-control sg-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+    <div class="sg-bar"><i id="win"></i></div>
+    <div class="d-flex justify-content-between small sg-muted mt-1"><span>Code refreshes every 30 seconds</span><span id="wl"></span></div>
+    <a class="btn btn-primary w-100 mt-4" asp-controller="Account" asp-action="RecoveryCodes">Confirm and continue</a>
+</div>

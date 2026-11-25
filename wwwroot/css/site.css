@@ -1,0 +1,110 @@
+:root {
+    --sg-navy: #1F3A6E;
+    --sg-ink: #14213D;
+    --sg-mute: #56627F;
+    --sg-line: #D6DDEA;
+    --sg-bg: #F1F4F9;
+}
+
+body {
+    background: var(--sg-bg);
+    color: var(--sg-ink);
+}
+
+.sg-nav {
+    background: var(--sg-navy);
+}
+
+.sg-card {
+    max-width: 440px;
+    margin: 2rem auto;
+    background: #fff;
+    border: 1px solid var(--sg-line);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.sg-box {
+    background: #fff;
+    border: 1px solid var(--sg-line);
+    border-radius: 10px;
+    padding: 1.25rem;
+}
+
+.sg-muted {
+    color: var(--sg-mute);
+}
+
+.sg-code {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 1.9rem;
+    letter-spacing: .4em;
+    text-align: center;
+}
+
+.sg-bar {
+    height: 6px;
+    background: var(--sg-line);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: .5rem;
+}
+
+    .sg-bar i {
+        display: block;
+        height: 100%;
+        width: 100%;
+        background: var(--sg-navy);
+        transition: width 1s linear;
+    }
+
+.sg-key {
+    font-family: ui-monospace, Consolas, monospace;
+    background: var(--sg-bg);
+    border: 1px dashed var(--sg-line);
+    border-radius: 6px;
+    padding: .5rem .75rem;
+    word-break: break-all;
+}
+
+.sg-qr {
+    width: 180px;
+    height: 180px;
+    margin: .5rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: 2px solid var(--sg-navy);
+    border-radius: 8px;
+    color: var(--sg-mute);
+    font-size: .85rem;
+    text-align: center;
+}
+
+.sg-codes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    margin: 1rem 0;
+}
+
+    .sg-codes span {
+        font-family: ui-monospace, Consolas, monospace;
+        font-weight: 600;
+        background: var(--sg-bg);
+        border: 1px solid var(--sg-line);
+        border-radius: 6px;
+        padding: .5rem;
+        text-align: center;
+    }
+
+.sg-stat b {
+    display: block;
+    font-size: 1.6rem;
+}
+
+.sg-stat span {
+    color: var(--sg-mute);
+    font-size: .85rem;
+}

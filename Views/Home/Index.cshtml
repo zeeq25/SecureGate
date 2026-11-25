@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "My security";
+    ViewData["ShowNav"] = true;
+}
+<div class="row g-3 mb-3">
+    <b>@User.Identity!.Name</b>
+    <div class="col-md-4"><div class="sg-box sg-stat"><b>Active</b><span>Authenticator app enrolled</span></div></div>
+    <div class="col-md-4"><div class="sg-box sg-stat"><b>8 of 10</b><span>Recovery codes unused</span></div></div>
+</div>
+
+<div class="row g-3 mb-3">
+    <div class="col-md-6">
+        <div class="sg-box h-100">
+            <h2 class="h6">Session controls</h2>
+            <p class="small sg-muted mb-3">Idle timeout: 15 minutes (resets on activity). Absolute limit: 8 hours. Sensitive actions ask for a fresh code.</p>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="m-0">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Sign out</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="sg-box h-100">
+            <h2 class="h6">Regenerate recovery codes</h2>
+            <p class="small sg-muted">Enter your current code to confirm it’s you. Old codes stop working.</p>
+            <input class="form-control sg-code mb-2" inputmode="numeric" maxlength="6" aria-label="Current 6-digit code" />
+            <a class="btn btn-primary w-100" asp-controller="Account" asp-action="RecoveryCodes">Generate new codes</a>
+        </div>
+    </div>
+</div>
+
+<div class="sg-box">
+    <h2 class="h6">My recent activity</h2>
+    <div class="table-responsive">
+        <table class="table table-sm small mb-0">
+            <thead><tr><th>Time</th><th>Event</th><th>Detail</th></tr></thead>
+            <tbody>
+                <tr><td>11/25/26 3:41 PM</td><td>Login ok</td><td>Session created</td></tr>
+                <tr><td>11/25/26 3:41 PM</td><td>Totp fail</td><td>Invalid, expired, or reused code (1/5)</td></tr>
+                <tr><td>11/24/26 9:12 AM</td><td>Login ok</td><td>Session created</td></tr>
+                <tr><td>11/22/26 7:03 PM</td><td>Enroll</td><td>Authenticator enrolled; 10 recovery codes issued</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
