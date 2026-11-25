@@ -28,13 +28,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// ADDED: one session per account - re-check the security stamp on every request
+builder.Services.Configure<SecurityStampValidatorOptions>(o =>
+    o.ValidationInterval = TimeSpan.Zero);
+
 // Session cookie settings
 builder.Services.ConfigureApplicationCookie(o =>
 {
     o.LoginPath = "/Account/Login";
     o.AccessDeniedPath = "/Account/Login";
     o.Cookie.HttpOnly = true;
-    o.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    o.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+    //o.Cookie.SecurePolicy = CookieSecurePolicy.Always; <-- use this after the HTTPS request has been approved
     o.Cookie.SameSite = SameSiteMode.Strict;
     o.ExpireTimeSpan = TimeSpan.FromMinutes(15);   // idle timeout
     o.SlidingExpiration = true;
